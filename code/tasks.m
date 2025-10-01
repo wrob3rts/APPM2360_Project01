@@ -4,8 +4,70 @@
 % Date Last Modified: 09/30/2025
 
 %% =================================================================
+% --- Task Set A ---
+% ==================================================================
+clc;
+clear;
+close all;
+
+disp('--- Starting Task Set A ---');
+
+%Define time vector
+t = 0:0.1:24;
+
+%Constants
+M0 = 75;   % equilibrium temperature
+k = 0.25;  % rate constant
+
+%Initial temperatures
+T01 = 0;
+T02 = 50;
+T03 = 80;
+
+%Exact analytical solutions
+T1 = M0 + (T01 - M0).*exp(-k*t);
+T2 = M0 + (T02 - M0).*exp(-k*t);
+T3 = M0 + (T03 - M0).*exp(-k*t);
+
+%Plotting all three
+figure;
+plot(t, T1, 'r', 'DisplayName','T(0)=0');
+hold on;
+plot(t, T2, 'g', 'DisplayName','T(0)=50');
+plot(t, T3, 'b', 'DisplayName','T(0)=80');
+yline(M0, ':', 'DisplayName','Equilibrium (75)');
+xlabel('t');
+ylabel('T(t)');
+legend();
+title('Analytical Temperature Solutions (Task Set A)');
+grid on;
+hold off;
+
+%Second figure for different k values
+M01 = 75;
+T04 = 50;
+k1 = 1;
+k2 = 0.5;
+k3 = 0.25;
+
+T4 = M01 + (T04 - M01).*exp(-k1*t);
+T5 = M01 + (T04 - M01).*exp(-k2*t);
+T6 = M01 + (T04 - M01).*exp(-k3*t);
+
+figure;
+plot(t, T4, 'r', 'DisplayName','k=1');
+hold on;
+plot(t, T5, 'g', 'DisplayName','k=0.5');
+plot(t, T6, 'b', 'DisplayName','k=0.25');
+xlabel('t');
+ylabel('T(t)');
+legend();
+title('Effect of Different k Values (Task Set A)');
+grid on;
+hold off;
+%% =================================================================
 % --- Task Set B (RK4 Method vs. Exact Solution) ---
-% =================================================================
+% ==================================================================
 clc;
 clear;
 close all;
